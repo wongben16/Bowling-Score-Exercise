@@ -1,63 +1,84 @@
-const originalScore = prompt("Enter in your bowling scores.");
-const bowlingThrows = originalScore.split('-').join(''); //removes the "-" in the scores and rejoins the array toegether with ""
-const scoreValue = [];
-var bowlingIterator = 0;
+// var readline = require("readline");
+// var fs = require("fs");
+
+// var myInterface = readline.createInterface({
+//     input: fs.createReadStream('demofile1.html')
+// });
+
+const originalScore = 'x-x-x-x-x-x-x-x-45-54'
+
+originalScore.toLowerCase();
+
+// let originalScore = readline.question("Enter in your bowling scores.");
+const throws = originalScore.split('-').join(''); //removes the "-" in the scores and rejoins the array toegether with ""
+
+
+const frameScoreValue = [];
+var throwsIterator = 0;
 var scoreIterator = 0;
 var totalScore = 0;
+var frameCounter = 0;
 
 /////////////////debug the program. not working as of 01.24.23//////////////////
 
 
-while(bowlingIterator < originalScore.length){
-    // console.log(bowlingThrows[bowlingIterator])
-    if(/\d/.test(bowlingThrows[bowlingIterator])){ //checks if string contains a number 0-9. True if there is a number
-        
-        if (/\d/.test(bowlingThrows[bowlingIterator+1])){ //if throw 1 and 2 are numbers then adds them together
-            scoreValue[scoreIterator] = parseInt(bowlingThrows[bowlingIterator+1]) + parseInt(bowlingThrows[bowlingIterator+2]);
+while(throwsIterator < throws.length){
+    // console.log(throws[throwsIterator])
+    if(/\d/.test(throws[throwsIterator])){ //checks if string contains a number 0-9. True if there is a number
+
+        if (/\d/.test(throws[throwsIterator+1])){ //if throw 1 and 2 are numbers then adds them together
+            frameScoreValue[scoreIterator] = parseInt(throws[throwsIterator+1]) + parseInt(throws[throwsIterator+2]);
+            console.log(frameScoreValue[scoreIterator]);
         }
 
         else { //if throw 2 is a / then score is 10 + the next throw (which is the third throw)
-            scoreValue[scoreIterator] = 10 + parseInt(bowlingThrows[bowlingIterator+2]);
+            frameScoreValue[scoreIterator] = 10 + parseInt(throws[throwsIterator+2]);
+            throwsIterator++;
         }
     }
 
     else {
-        if (bowlingThrows[bowlingIterator].toLowerCase == "x"){//checks if string where bowlingIterator is contains a X
+        if (throws[throwsIterator] == "x"){//checks if string where throwsIterator is contains a X
            
-            if (bowlingThrows[bowlingIterator+1].toLowerCase == "x"){ //checks if next number in the string is a X
+            if (throws[throwsIterator+1] == "x"){ //checks if next number in the string is a X
                 
-                if (bowlingThrows[bowlingIterator+2].toLowerCase == "x"){ //checks if second throw is a X
-                    scoreValue[scoreIterator] = 30;
+                if (throws[throwsIterator+2] == "x"){ //checks if second throw is a X
+                    frameScoreValue[scoreIterator] = 30;
+                }
+
+                else{
+                    frameScoreValue[scoreIterator] = (20 + parseInt(throws[throwsIterator+2]));
                 }
             }
 
-            else if (bowlingThrows[bowlingIterator+2] == "/"){ // check if second throw is a /
-               scoreValue[scoreIterator] = 20;
+            else if (throws[throwsIterator+2] == "/"){ // check if second throw is a /
+               frameScoreValue[scoreIterator] = 20;
 
             }
                
             else { //adds X + next two throw if throws did not contain X or /
-                scoreValue[scoreIterator] = 10 + parseInt(bowlingThrows[bowlingIterator+1]) + parseInt(bowlingThrows[bowlingIterator+2]);
+                frameScoreValue[scoreIterator] = 10 + parseInt(throws[throwsIterator+1]) + parseInt(throws[throwsIterator+2]);
             }    
 
         }
 
-        else if(bowlingThrows[bowlingIterator+1] == "/"){ //checks if second throw is a /
+        else if(throws[throwsIterator+1] == "/"){ //checks if second throw is a /
             
-            if (bowlingThrows[bowlingIterator+2].toLowerCase == "x"){ // check if second throw is a X
-                scoreValue[scoreIterator] = 20;
+            if (throws[throwsIterator+2] == "x"){ // check if second throw is a X
+                frameScoreValue[scoreIterator] = 20;
              }
 
         }
     }
 
     scoreIterator++;
-    bowlingIterator++;
+    throwsIterator++;
     
 }
 
-for (i = 0; i < scoreValue.length; i++){
-    totalScore= totalScore + scoreValue[i];
+for (i = 0; i < frameScoreValue.length; i++){
+    totalScore= totalScore + frameScoreValue[i];
+    console.log(frameScoreValue);
     console.log(totalScore);
 }
 
