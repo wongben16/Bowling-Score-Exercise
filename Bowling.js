@@ -1,14 +1,13 @@
-// var readline = require("readline");
-// var fs = require("fs");
 
-// var myInterface = readline.createInterface({
-//     input: fs.createReadStream('demofile1.html')
-// });
-// let originalScore = readline.question("Enter in your bowling scores.");
+
+const originalScore = prompt("Enter in your bowling scores.");
+
+
+////////////////////////TEST STRINGS///////////////////////
 // const originalScore = 'x-x-x-x-x-x-x-x-x-x-4-5';
 // const originalScore = 'x-x-x-x-x-x-x-x-45-54';
-const originalScore = '5/-43-10-x-x-x-9/-4/-x-x-6-0';
-
+// const originalScore = '5/-43-10-x-x-x-9/-4/-x-x-6-0';
+///////////////////////////////////////////////////////////
 
 const throws = originalScore.split('-').join('').toLowerCase(); //removes the "-" in the scores and rejoins the array toegether with ""
 const frameScoreValue = [];
@@ -59,8 +58,9 @@ while(throwsIterator < throws.length && frameCounter < 10){
 
 for (i = 0; i < frameScoreValue.length; i++){
     totalScore= totalScore + frameScoreValue[i];
-    console.log(frameScoreValue);
-    console.log("Total Score = ", totalScore);
+    // console.log(frameScoreValue);
 }
+
+console.log("Total Score = ", totalScore);
 
 
