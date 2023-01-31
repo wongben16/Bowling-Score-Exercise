@@ -1,6 +1,7 @@
+var prompt = require('readline-sync');
 
 
-const originalScore = prompt("Enter in your bowling scores.");
+const originalScore = prompt.question("Enter in your bowling scores: ");
 
 
 ////////////////////////TEST STRINGS///////////////////////
