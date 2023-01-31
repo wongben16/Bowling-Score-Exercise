@@ -1,5 +1,6 @@
 # Bowling-Score-Exercise
+To run program install Node.JS
 
-install Node.JS to run this program
-install the readlineSync package
+npm install
+node Bowling.js
 
