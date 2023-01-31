@@ -1,3 +1,6 @@
 # Bowling-Score-Exercise
+To run program install Node.JS
 
-install Node.JS to run this program
+npm install
+node Bowling.js
+
